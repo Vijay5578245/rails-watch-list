@@ -1,0 +1,18 @@
+<h1><%= @list.name %></h1>
+
+<p><% @list.bookmarks.each do |mark| %></p>
+<div>
+  <p><%= mark.comment %></p>
+  <p><%=  mark.movie.title %></p>
+  <img src="<%= mark.movie.poster_url %>" alt="movie img" style="width:250px; height:auto;">
+  <p><%= link_to "delete",  bookmark_path(mark), data: {turbo_method: :delete}%></p>
+  <p><%= mark.movie.rating %></p>
+</div>
+<% end %>
+
+<p><%= link_to "back",  lists_path%></p>
+
+<p><%= link_to "delete",  list_path, data: {turbo_method: :delete}%></p>
+
+
+<p><%= link_to "add movie",  new_list_bookmark_path(params[:id])%></p>

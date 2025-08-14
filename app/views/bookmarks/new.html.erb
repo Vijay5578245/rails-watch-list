@@ -1,0 +1,6 @@
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :movie_id, label: "Movie",
+      collection: Movie.order(:title).pluck(:title, :id) %>
+  <%= f.button :submit, "Save movie" %>
+<% end %>
